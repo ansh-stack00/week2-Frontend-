@@ -20,7 +20,7 @@ let todos = getFromStorage("todos") || [] ;
 
 // let todos = getFromStorage("todos");
 
-// === Render Todos ===
+// rendering todos 
 function renderTodos() {
   // Clear old list
   todoList.innerHTML = "";
@@ -31,6 +31,23 @@ function renderTodos() {
 
     const span = document.createElement("span");
     span.innerText = todo;
+
+
+    const editBtn = document.createElement("button");
+    editBtn.className = "edit-btn";
+    editBtn.innerText = "Edit";
+
+    editBtn.addEventListener("click", () => {
+    
+      const newText = prompt("Edit your todo:", todo);
+      if (newText !== null && newText.trim() !== "") {
+        todos[index] = newText.trim(); 
+        saveToStorage("todos", todos);
+        renderTodos(); 
+      }
+    });
+
+
 
     // Delete button
     const delBtn = document.createElement("button");
@@ -45,6 +62,7 @@ function renderTodos() {
 
     li.appendChild(span);
     li.appendChild(delBtn);
+    li.appendChild(editBtn)
     todoList.appendChild(li);
   });
 }
