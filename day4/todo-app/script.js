@@ -20,9 +20,9 @@ let todos = getFromStorage("todos") || [] ;
 
 // let todos = getFromStorage("todos");
 
-// rendering todos 
+//  function to show the todos on UI 
 function renderTodos() {
-  // Clear old list
+
   todoList.innerHTML = "";
 
   todos.forEach((todo, index) => {
@@ -32,7 +32,7 @@ function renderTodos() {
     const span = document.createElement("span");
     span.innerText = todo;
 
-
+// adding edit functionality
     const editBtn = document.createElement("button");
     editBtn.className = "edit-btn";
     editBtn.innerText = "Edit";
@@ -48,8 +48,7 @@ function renderTodos() {
     });
 
 
-
-    // Delete button
+// adding delete functionality
     const delBtn = document.createElement("button");
     delBtn.className = "delete-btn";
     delBtn.innerText = "Delete";
